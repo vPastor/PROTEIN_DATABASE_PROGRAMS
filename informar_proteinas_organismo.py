@@ -7,18 +7,22 @@ else:
 	#inicializamos la variable adn para ir introduciendo datos en ella
 	contador_proteinas = 0
 	array = {}
+	linea_prueba=""
+	linea_nombre=""
+	contador = 1
 	fileadn = open(sys.argv[1])
 	for linea  in  fileadn:
-		#si al principio de la linea encuentra el signo >, es que es una cabecera, por lo tanto, imprimir la cabecera
 		#print (linea[0:2])
 		if (('OX') == (linea[0:2])):
-			print("\n\n")
-			print (linea)
 			linea_prueba = linea.split('   ')
-			linea_prueba=linea_prueba[1].split('=');
-			print (linea_prueba[1])
+			linea_prueba=linea_prueba[1].split('=')
+			linea_prueba=linea_prueba[1].replace(".", "").replace("\n", "").replace(";","")
+			if linea_nombre in array:
+				contador=array[linea_nombre][1]+1
+				array[linea_nombre]={linea_prueba,contador}
+			else:
+				array[linea_nombre]={linea_prueba,contador}
+			print(contador,linea_prueba)
 		if (('OS') == (linea[0:2])):
-			print("\n\n")
-			print (linea)
-			linea_prueba = linea.split('   ')
-			print (linea_prueba[1])
+			linea_nombre = linea.split('   ')[1].replace(".", "").replace("\n", "")
+	print(array)
