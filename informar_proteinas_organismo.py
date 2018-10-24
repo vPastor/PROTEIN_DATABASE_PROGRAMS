@@ -1,6 +1,6 @@
 import sys
 import gzip
-#si pasan menos o mas de 2 argumentos, corrección de errores
+#si pasan menos o mas de 2 argumentos, correccion de errores
 if (len(sys.argv)>2 or len(sys.argv)<2):
 	print ('Numero de argumentos invalidos')
 else:
@@ -18,10 +18,10 @@ else:
 			linea_prueba=linea_prueba[1].split('=')
 			linea_prueba=linea_prueba[1].replace(".", "").replace("\n", "").replace(";","")
 			if linea_nombre in array:
-				contador=array[linea_nombre][1]+1
-				array[linea_nombre]={linea_prueba,contador}
+				print array[linea_nombre]
+				array[linea_nombre][1]+=1
 			else:
-				array[linea_nombre]={linea_prueba,contador}
+				array[linea_nombre]=[linea_prueba,contador]
 			print(contador,linea_prueba)
 		if (('OS') == (linea[0:2])):
 			linea_nombre = linea.split('   ')[1].replace(".", "").replace("\n", "")
