@@ -31,5 +31,5 @@ else:
 		elif (('SQ') == (linea[0:2])):
 			printea = 1
             linea_descripcion=""
-    output_file=open(sys.argv[3], 'w') # abrimos fichero output, solo escritura
-    output_file.write(resultado) # escribimos en el fichero el contenido de resultado
+    output_file=open(sys.argv[3], 'w') 
+    output_file.write(to_print) 
