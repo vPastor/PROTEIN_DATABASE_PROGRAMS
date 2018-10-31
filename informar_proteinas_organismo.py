@@ -16,6 +16,7 @@ else:
 	filetoprint = open(sys.argv[2],"w")
 	array[0]=["TaxID","Scientific Name(Common Name)","Number of proteins"]
 	for linea  in  fileadn:
+		line = line.decode()  # pasamos de line typo bit a tipo string
 		#print (linea[0:2])
 		if (('OX') == (linea[0:2])):
 			repite = 0
@@ -35,6 +36,5 @@ else:
             else:
                 linea_nombre =linea_nombre_prov
                 repite = 1
-	print(array)
 	filetoprint.write(tabulate(array.values(),headers="firstrow"))
 	filetoprint.close()
