@@ -16,7 +16,7 @@ else:
 	filetoprint = open(sys.argv[2],"w")
 	array[0]=["TaxID","Scientific Name(Common Name)","Number of proteins"]
 	for linea  in  fileadn:
-		line = line.decode()  # pasamos de line typo bit a tipo string
+		linea = linea.decode()  # pasamos de line typo bit a tipo string
 		#print (linea[0:2])
 		if (('OX') == (linea[0:2])):
 			repite = 0
@@ -29,12 +29,12 @@ else:
 			else:
 				array[linea_nombre]=[linea_nombre,linea_prueba,contador]
 			#print(contador,linea_prueba)
-		if (('OS') == (linea[0:2])):
+		elif (('OS') == (linea[0:2])):
 			linea_nombre_prov = linea.split('   ')[1].replace(".", "").replace("\n", "")
-			if repite == 1:
-                linea_nombre+=linea_nombre_prov
-            else:
-                linea_nombre =linea_nombre_prov
-                repite = 1
+			if (repite == 1):
+				linea_nombre += linea_nombre_prov
+			else:
+				linea_nombre = linea_nombre_prov
+				repite = 1
 	filetoprint.write(tabulate(array.values(),headers="firstrow"))
 	filetoprint.close()
