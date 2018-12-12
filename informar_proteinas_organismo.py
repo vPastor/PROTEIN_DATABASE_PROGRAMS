@@ -22,7 +22,7 @@ else:
 			repite = 0
 			linea_prueba = linea.split('   ')
 			linea_prueba=linea_prueba[1].split('=')
-			linea_prueba=linea_prueba[1].replace(".", "").replace("\n", "").replace(";","")
+			linea_prueba=linea_prueba[1].replace(".", "").strip().replace(";","")
 			if linea_nombre in array:
 				#print array[linea_nombre]
 				array[linea_nombre][2]+=1
@@ -30,7 +30,7 @@ else:
 				array[linea_nombre]=[linea_nombre,linea_prueba,contador]
 			#print(contador,linea_prueba)
 		elif (('OS') == (linea[0:2])):
-			linea_nombre_prov = linea.split('   ')[1].replace(".", "").replace("\n", "")
+			linea_nombre_prov = linea.split('   ')[1].replace(".", "").strip()
 			if (repite == 1):
 				linea_nombre += linea_nombre_prov
 			else:

@@ -10,16 +10,24 @@ else:
     proteina=""
     linea_descripcion=""
     printea=0
+    repetidoOC=0
     for linea  in  compressed_uniprot_file:
         linea = linea.decode()
         if (('ID') == (linea[0:2])):
             linea_id=linea.split("   ")[1] 
+        elif linea[0:2] == 'OC':
+                dlrp = linea.replace("OC   ", "").replace(";", "|").strip().replace(" ", "")
+                if repetidoOC == 0:
+                    dlr = line
+                    repetidoOC = 1
+                else:
+                    linea_descripcion += linea
         elif (('AC') == (linea[0:2])):
             linea_ac=linea.split("   ")[1].replace("\n","")
         elif (('OX') == (linea[0:2])):
             linea_prueba = linea.split('   ')
             linea_prueba=linea_prueba[1].split('=')
-            linea_prueba=linea_prueba[1].replace(".", "").replace("\n", "").replace(";","")
+            linea_prueba=linea_prueba[1].replace(".", "").strip().replace(";","")
             #.split("; ")[]
         #print (linea[0:2])
         elif (('//') == (linea[0:2])):
